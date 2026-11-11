@@ -1026,6 +1026,29 @@ button,a,[role="button"]{touch-action:manipulation}
 #intro,.software-intro video,.intro-cover,.intro-cover img{transform:translateZ(0);backface-visibility:hidden;will-change:opacity,transform}
 #stage,#canvas-holder,.stage,#workspace{contain:layout paint style}
 @media (max-width:480px){#grenadier-v4-summary{grid-template-columns:1fr 1fr}#grenadier-v4-panel{width:min(94vw,390px)}}
+</style><style id="grenadier-v8-ui">
+#grenadier-v4-tools>button{padding:11px 17px;font-weight:700}
+#grenadier-v4-panel{width:min(92vw,360px)}
+#grenadier-v4-panel .panel-head{padding:15px 15px 10px}
+#grenadier-v4-panel .panel-head strong{font-size:18px}
+#grenadier-v4-panel .panel-head span{font-size:12px;color:#c7d8e0}
+#grenadier-v4-summary{grid-template-columns:1fr;gap:9px;padding:12px 12px 6px}
+.status-card{min-height:0;padding:12px 13px;gap:6px}
+.status-card small{font-size:10px}
+.status-card strong{font-size:15px}
+.status-pill{font-size:11px;padding:4px 10px}
+#grenadier-v4-statusline{padding:2px 12px 12px;font-size:13px;line-height:1.42;color:#e6f0f5}
+#grenadier-v4-actions,#grenadier-v4-secondary{padding:0 12px 12px;gap:8px}
+#grenadier-v4-actions{grid-template-columns:1fr 1fr}
+#grenadier-v4-secondary{grid-template-columns:1fr 1fr}
+#grenadier-v4-panel button.action-primary,#grenadier-v4-panel button.action-secondary{min-height:46px;font-size:14px}
+#grenadier-v4-update-note,#grenadier-v4-help{display:none!important}
+#grenadier-v7-transition .transition-card{max-width:min(92vw,320px)}
+#intro, .software-intro, .software-intro video, #intro-video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center center;}
+#intro-video{background:#000; -webkit-transform:translateZ(0); transform:translateZ(0); will-change:transform,opacity; image-rendering:auto;}
+.software-intro, #intro{overflow:hidden; background:#000}
+@media (orientation:portrait){#intro-video{object-position:center center}}
+@media (max-width:480px){#grenadier-v4-panel{width:min(94vw,360px)} #grenadier-v4-actions,#grenadier-v4-secondary{grid-template-columns:1fr} }
 </style></head><body data-edition="standard" data-portable="true"><div id="grenadier-v4-splash" role="status" aria-label="Grenadier wird gestartet"><div class="mark">GRENADIER<small>3D EXPLORER</small></div></div>
 <header class="topbar"><button type="button" id="brand-home" class="brand" aria-label="Zur Fahrzeugansicht"><span class="brand-mark">G<span>↗</span></span><span>GRENADIER<small>3D EXPLORER</small></span></button><nav class="header-actions" aria-label="Explorer-Menü">
 <a class="text-button document-menu" href="#download-panel" data-document-page="1" aria-haspopup="dialog">Dokumente</a>
@@ -5198,57 +5221,55 @@ THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
  if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
 })();
 </script>
-<div id="grenadier-v4-tools"><button type="button" id="grenadier-v4-toggle" aria-expanded="false" aria-controls="grenadier-v4-panel">App-Status</button><section id="grenadier-v4-panel" hidden role="region" aria-label="App-Status und Aktionen"><div class="panel-head"><div><strong>Grenadier · App-Status</strong><span>Nur die wichtigsten Informationen für Offline, Version und Updates.</span></div><button type="button" id="grenadier-v4-close" aria-label="App-Status schließen">×</button></div><div id="grenadier-v4-summary"><article id="grenadier-v4-card-app" class="status-card tone-info"><small>App</small><strong>Wird geprüft …</strong><span class="status-pill">Prüfung</span></article><article id="grenadier-v4-card-intro" class="status-card tone-info"><small>Intro</small><strong>Wird geprüft …</strong><span class="status-pill">Prüfung</span></article><article id="grenadier-v4-card-network" class="status-card tone-info"><small>Verbindung</small><strong>Wird geprüft …</strong><span class="status-pill">Prüfung</span></article><article id="grenadier-v4-card-version" class="status-card tone-info"><small>Version</small><strong>Wird geprüft …</strong><span class="status-pill">Prüfung</span></article></div><p id="grenadier-v4-statusline" aria-live="polite">Status wird geprüft …</p><div id="grenadier-v4-actions"><button type="button" id="grenadier-v4-download" class="action-primary emphasis">Offline vollständig speichern</button><button type="button" id="grenadier-v4-update" class="action-primary">Update prüfen</button></div><div id="grenadier-v4-secondary"><button type="button" id="grenadier-v4-refresh" class="action-secondary">Status prüfen</button><button type="button" id="grenadier-v4-install" class="action-secondary">App installieren</button><button type="button" id="grenadier-v4-guide" class="action-secondary ghost">Installationshilfe</button><button type="button" id="grenadier-v4-update-help" class="action-secondary ghost">Wie Updates gehen</button></div><p id="grenadier-v4-update-note">Updates ohne Neuinstallation: Dateien im GitHub-Repository ändern, committen, auf <strong>main</strong> pushen. Nutzer öffnen danach die App und tippen bei Bedarf auf <strong>Update prüfen</strong>.</p><p id="grenadier-v4-help">Speicher- und Offline-Details werden geladen …</p></section></div><div id="grenadier-v7-transition" hidden aria-hidden="true"><div class="transition-card"><strong>Ansicht wird geöffnet …</strong><span>Bitte einen Moment warten.</span></div></div>
+<div id="grenadier-v4-tools"><button type="button" id="grenadier-v4-toggle" aria-expanded="false" aria-controls="grenadier-v4-panel">Offline &amp; Updates</button><section id="grenadier-v4-panel" hidden role="region" aria-label="App-Status und Aktionen"><div class="panel-head"><div><strong>Grenadier App</strong><span>Offline speichern, Updates prüfen, Hilfe öffnen.</span></div><button type="button" id="grenadier-v4-close" aria-label="Fenster schließen">×</button></div><div id="grenadier-v4-summary"><article id="grenadier-v4-card-app" class="status-card tone-info"><small>Offline</small><strong>Wird geprüft …</strong><span class="status-pill">Prüfung</span></article><article id="grenadier-v4-card-intro" class="status-card tone-info"><small>Intro</small><strong>Wird geprüft …</strong><span class="status-pill">Prüfung</span></article><article id="grenadier-v4-card-network" class="status-card tone-info"><small>Verbindung</small><strong>Wird geprüft …</strong><span class="status-pill">Prüfung</span></article></div><p id="grenadier-v4-statusline" aria-live="polite">Status wird geprüft …</p><div id="grenadier-v4-actions"><button type="button" id="grenadier-v4-download" class="action-primary emphasis">Offline speichern</button><button type="button" id="grenadier-v4-update" class="action-primary">Updates prüfen</button></div><div id="grenadier-v4-secondary"><button type="button" id="grenadier-v4-install" class="action-secondary">App installieren</button><button type="button" id="grenadier-v4-guide" class="action-secondary ghost">Hilfe</button><button type="button" id="grenadier-v4-refresh" class="action-secondary ghost">Status neu laden</button><button type="button" id="grenadier-v4-close-2" class="action-secondary ghost">Schließen</button><button type="button" id="grenadier-v4-update-help" hidden>Wie Updates gehen</button></div><p id="grenadier-v4-update-note"></p><p id="grenadier-v4-help"></p></section></div><div id="grenadier-v7-transition" hidden aria-hidden="true"><div class="transition-card"><strong>Ansicht wird geöffnet …</strong><span>Bitte einen Moment warten.</span></div></div>
 <script id="grenadier-v4-enhancements">(()=>{'use strict';
  const $=id=>document.getElementById(id);
- const panel=$('grenadier-v4-panel'),toggle=$('grenadier-v4-toggle'),closeBtn=$('grenadier-v4-close');
- const statusLine=$('grenadier-v4-statusline'),help=$('grenadier-v4-help'),updateNote=$('grenadier-v4-update-note');
- const btnRefresh=$('grenadier-v4-refresh'),btnUpdate=$('grenadier-v4-update'),btnDownload=$('grenadier-v4-download'),btnInstall=$('grenadier-v4-install'),btnGuide=$('grenadier-v4-guide'),btnUpdateHelp=$('grenadier-v4-update-help');
- const cards={app:$('grenadier-v4-card-app'),intro:$('grenadier-v4-card-intro'),network:$('grenadier-v4-card-network'),version:$('grenadier-v4-card-version')};
+ const panel=$('grenadier-v4-panel'),toggle=$('grenadier-v4-toggle'),closeBtn=$('grenadier-v4-close'),closeBtn2=$('grenadier-v4-close-2');
+ const statusLine=$('grenadier-v4-statusline');
+ const btnRefresh=$('grenadier-v4-refresh'),btnUpdate=$('grenadier-v4-update'),btnDownload=$('grenadier-v4-download'),btnInstall=$('grenadier-v4-install'),btnGuide=$('grenadier-v4-guide');
+ const cards={app:$('grenadier-v4-card-app'),intro:$('grenadier-v4-card-intro'),network:$('grenadier-v4-card-network')};
  const transition=$('grenadier-v7-transition');
  const installed=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone===true;
- let worker=null,media=[],ready=false,lastBuild='';
- function setLine(text){statusLine.innerHTML=text;}
+ let worker=null,media=[],ready=false;
+ function setLine(html){statusLine.innerHTML=html;}
  function setCard(el,title,status,tone){if(!el)return;el.className='status-card tone-'+tone;const strong=el.querySelector('strong'),pill=el.querySelector('.status-pill');if(strong)strong.textContent=title;if(pill)pill.textContent=status;}
- function setCardsFromState(){
-   const mediaReady=media.filter(x=>x.ready).length,total=media.length||2,complete=ready&&total>0&&mediaReady===total;
-   setCard(cards.app, complete?'Offline bereit':'Noch nicht vollständig offline', complete?'Bereit':ready?'Teilweise':'Prüfen', complete?'ok':ready?'warn':'bad');
-   setCard(cards.intro, mediaReady+'/'+total+' Intro-Videos gespeichert', mediaReady===total?'Gespeichert':mediaReady?'Teilweise':'Fehlt', mediaReady===total?'ok':mediaReady?'warn':'bad');
-   setCard(cards.network, navigator.onLine?'Internet vorhanden':'Gerät ist offline', navigator.onLine?'Online':'Offline', navigator.onLine?'info':'warn');
-   setCard(cards.version, lastBuild?'Build '+String(lastBuild).slice(0,8):'Version wird ermittelt', lastBuild?'Aktiv':'Prüfen', lastBuild?'info':'warn');
-   setLine((complete?'<strong>Alles bereit.</strong>':'<strong>App wird vorbereitet.</strong>')+' Offline-Nutzung, Intro-Dateien und Version wurden geprüft.');
+ function render(){const stored=media.filter(x=>x.ready).length,total=media.length||2;const complete=ready&&stored===total&&total>0;
+   setCard(cards.app, complete?'Offline bereit':'Offline noch nicht komplett', complete?'Bereit':ready?'Teilweise':'Prüfen', complete?'ok':ready?'warn':'bad');
+   setCard(cards.intro, stored===total?'Intro gespeichert':stored?stored+'/'+total+' Teile gespeichert':'Intro noch nicht gespeichert', stored===total?'Gespeichert':stored?'Teilweise':'Fehlt', stored===total?'ok':stored?'warn':'bad');
+   setCard(cards.network, navigator.onLine?'Internet verbunden':'Derzeit offline', navigator.onLine?'Online':'Offline', navigator.onLine?'info':'warn');
+   setLine(complete?'Alles bereit. Die App kann auch ohne Internet genutzt werden.':'Für volle Offline-Nutzung bitte einmal „Offline speichern“ tippen.');
+   btnInstall.hidden=installed;
  }
  async function refresh(){
-   setLine('Status wird geprüft …');
    try{
-     if(!('serviceWorker' in navigator)) throw Error('Service Worker nicht unterstützt');
+     if(!('serviceWorker' in navigator)) throw Error('nicht unterstützt');
      const reg=await navigator.serviceWorker.ready; worker=navigator.serviceWorker.controller||reg.active;
-     if(!worker) throw Error('Service Worker noch nicht bereit');
+     if(!worker) throw Error('nicht bereit');
      worker.postMessage({type:'OFFLINE_STATUS',requestId:Date.now()});
-     const parts=[];
-     if(navigator.storage?.estimate){const e=await navigator.storage.estimate();parts.push('Gespeichert: '+((e.usage||0)/1048576).toFixed(1)+' MiB');}
-     if(navigator.storage?.persisted){const p=await navigator.storage.persisted();parts.push('Dauerhafte Speicherung: '+(p?'aktiv':'nicht garantiert'));}
-     help.textContent=parts.join(' · ')||'Browser können Offline-Daten bei Speichermangel entfernen.';
-     btnInstall.hidden=installed; btnGuide.hidden=installed;
-   }catch(e){setLine('<strong>Status nicht verfügbar.</strong> '+e.message);help.textContent='Bitte Seite neu laden und erneut prüfen.';}
+   }catch(_){setLine('Status aktuell nicht verfügbar. Bitte Seite neu laden.');}
  }
  navigator.serviceWorker?.addEventListener('message',e=>{const m=e.data||{};
-   if(m.type==='OFFLINE_STATUS'){ready=!!m.ready;media=m.media||[];lastBuild=m.buildId||'';setCardsFromState();}
-   if(m.type==='CACHE_MEDIA_PROGRESS'){setLine('<strong>Offline-Speicherung läuft …</strong> '+m.done+' / '+m.total+' Dateien werden vorbereitet.');}
-   if(m.type==='CACHE_MEDIA_RESULT'){setLine(m.errors?.length?'<strong>Offline-Speicherung unvollständig.</strong> '+m.errors.length+' Datei(en) konnten nicht gespeichert werden.':'<strong>Offline-Speicherung abgeschlossen.</strong> Alle vorgesehenen Dateien sind verfügbar.');refresh();}
+   if(m.type==='OFFLINE_STATUS'){ready=!!m.ready;media=m.media||[];render();}
+   if(m.type==='CACHE_MEDIA_PROGRESS'){setLine('Offline-Speicherung läuft … '+m.done+' / '+m.total);}
+   if(m.type==='CACHE_MEDIA_RESULT'){setLine(m.errors?.length?'Nicht alles konnte gespeichert werden. Bitte später erneut versuchen.':'Offline-Speicherung abgeschlossen.');refresh();}
  });
- toggle.onclick=()=>{panel.hidden=!panel.hidden;toggle.setAttribute('aria-expanded',String(!panel.hidden));if(!panel.hidden)refresh();};
- closeBtn.onclick=()=>{panel.hidden=true;toggle.setAttribute('aria-expanded','false');};
+ function openPanel(){panel.hidden=false;toggle.setAttribute('aria-expanded','true');refresh();}
+ function closePanel(){panel.hidden=true;toggle.setAttribute('aria-expanded','false');}
+ toggle.onclick=()=>panel.hidden?openPanel():closePanel();
+ closeBtn.onclick=closePanel; if(closeBtn2) closeBtn2.onclick=closePanel;
  btnRefresh.onclick=refresh;
- btnUpdate.onclick=async()=>{if(navigator.onLine===false){setLine('<strong>Kein Update möglich.</strong> Für die Prüfung wird kurz Internet benötigt.');return;}setLine('Update wird geprüft …');const r=typeof window.grenadierCheckUpdate==='function'?await window.grenadierCheckUpdate():{ok:false};if(r.update){setLine('<strong>Neue Version verfügbar.</strong> Bestätige den eingeblendeten Hinweis mit „Aktualisieren“.');}else if(r.ok){setLine('<strong>Alles aktuell.</strong> Du verwendest bereits die neueste veröffentlichte Version.');}else{setLine('<strong>Update-Prüfung derzeit nicht möglich.</strong> Bitte kurz später erneut versuchen.');}};
- btnDownload.onclick=async()=>{if(!navigator.onLine){setLine('<strong>Offline-Download nicht gestartet.</strong> Für die erstmalige Speicherung bitte kurz online gehen.');return;}try{if(navigator.storage?.persist){const granted=await navigator.storage.persist();if(!granted)help.textContent='Die Offline-Speicherung ist aktiv, wird von iOS/Safari aber nicht absolut garantiert.'}const reg=await navigator.serviceWorker.ready;const w=navigator.serviceWorker.controller||reg.active;if(!w)throw Error('Service Worker noch nicht bereit');setLine('<strong>Offline-Speicherung startet …</strong> Die App-Dateien werden lokal gesichert.');w.postMessage({type:'CACHE_MEDIA'});}catch(e){setLine('<strong>Offline-Download nicht gestartet.</strong> '+e.message);}};
- btnInstall.onclick=async()=>{if(typeof window.grenadierInstallApp==='function'){const ok=await window.grenadierInstallApp();if(ok)return;}help.textContent=/iPhone|iPad|iPod/.test(navigator.userAgent)?'iPhone/iPad: Safari → Teilen → Zum Home-Bildschirm.':'Android/Windows: Browser-Menü → App installieren.';};
- btnGuide.onclick=()=>{location.href='./install.html'};
- btnUpdateHelp.onclick=()=>{location.href='./install.html#updates'};
- function showTransition(title,subtitle){if(!transition)return;transition.querySelector('strong').textContent=title;transition.querySelector('span').textContent=subtitle||'Bitte einen Moment warten.';transition.hidden=false;requestAnimationFrame(()=>transition.classList.add('is-visible'));clearTimeout(showTransition._t);showTransition._t=setTimeout(()=>{transition.classList.remove('is-visible');setTimeout(()=>{transition.hidden=true;},180);},820);}
- document.addEventListener('click',e=>{const el=e.target.closest('#explosion-tab,#explosion-mobile,#explosion-close,#ecu-stage-toggle,#ecu-toggle,#ecu-back,#rear-camera-view,.document-menu');if(!el)return;let title='Ansicht wird geöffnet …';let sub='Bitte einen Moment warten.';if(String(el.id).includes('explosion')){title='Explosionsansicht wird geöffnet …';sub='Bauteile und Beschriftungen werden vorbereitet.';}else if(String(el.id).includes('ecu')){title='Steuergeräteansicht wird geöffnet …';sub='Steuergeräte-Overlay wird vorbereitet.';}else if(el.classList.contains('document-menu')){title='Dokumente werden geöffnet …';sub='Dokumentenansicht wird geladen.';}showTransition(title,sub);},true);
+ btnUpdate.onclick=async()=>{if(navigator.onLine===false){setLine('Für die Update-Prüfung bitte kurz online gehen.');return;}setLine('Suche nach Updates …');const r=typeof window.grenadierCheckUpdate==='function'?await window.grenadierCheckUpdate():{ok:false};if(r.update){setLine('Neue Version gefunden. Bitte „Aktualisieren“ bestätigen.');}else if(r.ok){setLine('Die App ist bereits aktuell.');}else{setLine('Update-Prüfung derzeit nicht möglich.');}};
+ btnDownload.onclick=async()=>{if(!navigator.onLine){setLine('Für die erste Offline-Speicherung bitte kurz online gehen.');return;}try{if(navigator.storage?.persist)await navigator.storage.persist().catch(()=>{});const reg=await navigator.serviceWorker.ready;const w=navigator.serviceWorker.controller||reg.active;if(!w)throw Error('nicht bereit');setLine('Offline-Dateien werden gespeichert …');w.postMessage({type:'CACHE_MEDIA'});}catch(_){setLine('Offline-Speicherung konnte nicht gestartet werden.');}};
+ btnInstall.onclick=async()=>{if(typeof window.grenadierInstallApp==='function'){const ok=await window.grenadierInstallApp();if(ok)return;} location.href='./install.html';};
+ btnGuide.onclick=()=>{location.href='./install.html';};
+ function showTransition(title,subtitle){if(!transition)return;transition.querySelector('strong').textContent=title;transition.querySelector('span').textContent=subtitle||'Bitte kurz warten.';transition.hidden=false;requestAnimationFrame(()=>transition.classList.add('is-visible'));clearTimeout(showTransition._t);showTransition._t=setTimeout(()=>{transition.classList.remove('is-visible');setTimeout(()=>{transition.hidden=true;},180);},700);}
+ document.addEventListener('click',e=>{const el=e.target.closest('#explosion-tab,#explosion-mobile,#explosion-close,#ecu-stage-toggle,#ecu-toggle,#ecu-back,#rear-camera-view,.document-menu');if(!el)return;let title='Ansicht wird geöffnet …';let sub='Bitte kurz warten.';if(String(el.id).includes('explosion')){title='Explosionsansicht wird geöffnet …';sub='Bauteile werden vorbereitet.';}else if(String(el.id).includes('ecu')){title='Steuergeräteansicht wird geöffnet …';sub='Steuergeräte werden geladen.';}else if(el.classList.contains('document-menu')){title='Dokumente werden geöffnet …';sub='Dokumente werden geladen.';}showTransition(title,sub);},true);
  const introVideo=$('intro-video');
- if(introVideo){introVideo.setAttribute('preload','metadata');const preloadIntro=()=>{if(document.head.querySelector('link[data-intro-preload]'))return;const aspect=(window.innerWidth||16)/(window.innerHeight||9);const src=(aspect<0.78&&introVideo.dataset.portrait)||introVideo.dataset.wide||introVideo.dataset.portrait;if(!src)return;const link=document.createElement('link');link.rel='preload';link.as='video';link.href=src;link.fetchPriority='high';link.dataset.introPreload='1';document.head.appendChild(link);};window.addEventListener('load',()=>{'requestIdleCallback' in window?requestIdleCallback(preloadIntro,{timeout:1400}):setTimeout(preloadIntro,700)},{once:true});}
+ if(introVideo){introVideo.setAttribute('preload','auto');introVideo.setAttribute('playsinline','');introVideo.setAttribute('webkit-playsinline','');introVideo.setAttribute('disablepictureinpicture','');
+   const applyVideoLayout=()=>{introVideo.style.objectFit='cover';introVideo.style.objectPosition='center center';};
+   const preloadIntro=()=>{if(document.head.querySelector('link[data-intro-preload]'))return;const portrait=window.matchMedia('(orientation: portrait)').matches;const src=(portrait&&introVideo.dataset.portrait)||introVideo.dataset.wide||introVideo.dataset.portrait;if(!src)return;const link=document.createElement('link');link.rel='preload';link.as='video';link.href=src;link.fetchPriority='high';link.dataset.introPreload='1';document.head.appendChild(link);applyVideoLayout();};
+   applyVideoLayout(); window.addEventListener('resize',applyVideoLayout,{passive:true}); window.addEventListener('orientationchange',applyVideoLayout,{passive:true}); window.addEventListener('load',()=>{'requestIdleCallback' in window?requestIdleCallback(preloadIntro,{timeout:800}):setTimeout(preloadIntro,250)},{once:true});
+ }
  if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
  window.addEventListener('online',()=>{if(!panel.hidden)refresh()});window.addEventListener('offline',()=>{if(!panel.hidden)refresh()});
 })();</script>
