@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "INEOS Grenadier · 3D Explorer V40",
+  "name": "INEOS Grenadier · 3D Explorer V9",
   "short_name": "Grenadier 3D",
-  "description": "Interaktiver 3D Explorer des INEOS Grenadier, Version 40 – Studienprojekt.",
+  "description": "INEOS Grenadier 3D Explorer – Studienprojekt, GitHub Pages V9.",
   "lang": "de",
   "start_url": "./",
   "scope": "./",

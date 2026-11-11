@@ -1,3 +1,7 @@
+# Grenadier · 3D Explorer V9
+
+Aktuell für GitHub Pages: V9. Hinweise siehe `V9_AENDERUNGEN_UND_QUELLEN.md`.
+
 # INEOS Grenadier · 3D Explorer V40 PWA
 
 Diese Repository-Fassung ist für **GitHub Pages** vorbereitet. Die eigentliche App steckt in `index.html`; PWA, Offline-Cache und Update-System werden über `sw.js`, `manifest.webmanifest` und GitHub Actions bereitgestellt.
