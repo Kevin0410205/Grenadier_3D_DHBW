@@ -1,40 +1,60 @@
 # Zukünftige Updates – Schritt für Schritt
 
-## Einfachster Ablauf mit GitHub Desktop
+## 1. Dateien lokal ändern
+Öffne deinen lokalen Repository-Ordner **Grenadier_3D_DHBW**. Dort liegen die veröffentlichten Website-Dateien.
 
-1. Vor Änderungen eine Kopie der zuletzt funktionierenden Projektversion behalten.
-2. Neue/angepasste Dateien in deinen lokalen Repository-Ordner kopieren und vorhandene Dateien ersetzen.
-3. GitHub Desktop öffnen und die Änderungsliste prüfen.
-4. Commit-Nachricht vergeben, z. B. `V41 – Prüfstand und Innenraum verbessert`.
-5. **Commit to main** und danach **Push origin**.
-6. GitHub startet automatisch den Pages-Workflow.
-7. Unter **Actions** warten, bis der Lauf grün ist.
-8. Danach ist die neue Version veröffentlicht.
+Typische Änderungen sind zum Beispiel:
+- `index.html` für Oberfläche und Funktionen
+- `sw.js` für Offline-Verhalten
+- `manifest.webmanifest` für PWA-Einstellungen
+- `media/` für Intro-Videos
+- `icons/` für App-Symbole
 
-## Was passiert bei den Nutzern?
+## 2. Änderungen in GitHub Desktop prüfen
+Nach dem Speichern öffnest du **GitHub Desktop**. Dort siehst du alle geänderten Dateien.
 
-- Die installierte App bleibt installiert.
-- Bei Internetverbindung prüft sie automatisch auf eine neue Service-Worker-Version.
-- Wenn ein Update bereitsteht, erscheint `Eine neue App-Version ist verfügbar`.
-- Nutzer drücken **Aktualisieren**; die App lädt neu.
-- Alternativ: **App-Status → Update prüfen**.
-- Eine Deinstallation ist nicht erforderlich.
+Prüfe kurz:
+- sind nur die gewünschten Dateien geändert?
+- wurde nicht versehentlich eine ZIP-Datei mit hineinkopiert?
+- sind neue Medien oder Bilder wirklich im richtigen Ordner?
 
-## Wenn ein Update fehlschlägt
+## 3. Commit erstellen
+Unten links eine kurze Commit-Nachricht eintragen, zum Beispiel:
 
-Der neue Service Worker wird erst installiert, wenn die Kern-Dateien erfolgreich geladen wurden. Die vorherige App-Shell bleibt als Rückfall erhalten. Ein fehlgeschlagenes GitHub-Actions-Deployment ersetzt die veröffentlichte Seite nicht durch eine halbfertige Version.
+`V41 – Statusfenster und Intro verbessert`
 
-## Neue Dateien offline verfügbar machen
+Dann auf **Commit to main** klicken.
 
-- Kleine, zwingend benötigte Dateien: in `CORE` in `sw.js` ergänzen.
-- Große Medien (z. B. Videos): in `MEDIA` ergänzen.
-- Danach normal committen/pushen.
-- Bestehende Nutzer erhalten die neue App-Version ohne Neuinstallation.
+## 4. Online veröffentlichen
+Danach oben auf **Push origin** klicken.
 
-## Intro-Video ersetzen
+Damit wird die neue Version zu GitHub hochgeladen. GitHub Actions startet anschließend automatisch das Deployment für GitHub Pages.
 
-Du kannst `media/intro-wide.mp4` und `media/intro-portrait.mp4` ersetzen. Durch die neue Build-ID wird der Mediencache nach einem Update erneut aktualisiert.
+## 5. Deployment prüfen
+Öffne dein Repository auf GitHub und gehe auf **Actions**.
 
-## Sehr wichtig
+Wenn der Lauf grün ist, wurde die neue Version erfolgreich veröffentlicht.
+Wenn der Lauf rot ist, war das Update **nicht** erfolgreich online. Dann bleibt die bisherige funktionierende Version aktiv.
 
-Nicht einfach nur eine neue ZIP-Datei ins Repository legen. GitHub Pages benötigt die entpackten Website-Dateien im Repository.
+## 6. Was Nutzer tun müssen
+Nutzer müssen die App **nicht neu installieren**.
+
+Normalerweise reicht:
+1. App öffnen
+2. bei Bedarf **App-Status → Update prüfen**
+3. den Hinweis **Aktualisieren** bestätigen
+
+Danach lädt die App neu und verwendet die neue Version.
+
+## 7. Was bei mehreren Nutzern passiert
+Mehrere Nutzer gleichzeitig sind kein Problem. Die App läuft als **statische Website/PWA** auf GitHub Pages.
+Es gibt keinen gemeinsamen bearbeitbaren Serverzustand und keine Sitzung, die andere Nutzer blockiert.
+Jeder Nutzer lädt nur seine eigene Kopie der Dateien im Browser.
+
+## 8. Wenn etwas schiefgeht
+- Ein fehlgeschlagenes GitHub-Actions-Deployment ersetzt die veröffentlichte Seite nicht durch eine halbfertige Version.
+- Der Service Worker installiert neue Versionen erst, wenn die Kern-Dateien korrekt vorhanden sind.
+- Eine vorherige App-Shell bleibt als Rückfall verfügbar.
+
+## 9. Sehr wichtig
+Nicht einfach eine neue ZIP-Datei in das Repository legen. GitHub Pages benötigt die **entpackten Website-Dateien** direkt im Repository.
