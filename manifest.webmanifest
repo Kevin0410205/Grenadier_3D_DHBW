@@ -1,0 +1,56 @@
+{
+  "id": "./",
+  "name": "INEOS Grenadier · 3D Explorer V40",
+  "short_name": "Grenadier 3D",
+  "description": "Interaktiver 3D Explorer des INEOS Grenadier, Version 40 – Studienprojekt.",
+  "lang": "de",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f6f2",
+  "theme_color": "#193547",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "categories": [
+    "education",
+    "simulation"
+  ],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "Grenadier öffnen",
+      "short_name": "Explorer",
+      "url": "./",
+      "icons": [
+        {
+          "src": "./icons/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

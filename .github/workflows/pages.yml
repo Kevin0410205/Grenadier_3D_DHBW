@@ -1,0 +1,72 @@
+name: Grenadier PWA auf GitHub Pages veröffentlichen
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository laden
+        uses: actions/checkout@v4
+
+      - name: GitHub Pages konfigurieren
+        uses: actions/configure-pages@v5
+
+      - name: PWA prüfen
+        run: |
+          node --check sw.js
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          json.loads(Path('manifest.webmanifest').read_text(encoding='utf-8'))
+          required=['index.html','sw.js','manifest.webmanifest','install.html','404.html','.nojekyll','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png','media/intro-wide.mp4','media/intro-portrait.mp4']
+          missing=[p for p in required if not Path(p).exists()]
+          if missing: raise SystemExit('Fehlende Dateien: '+', '.join(missing))
+          sw=Path('sw.js').read_text(encoding='utf-8')
+          if '__GRENADIER_BUILD_ID__' not in sw: raise SystemExit('Build-ID-Platzhalter in sw.js fehlt')
+          too_big=[str(p) for p in Path('.').rglob('*') if p.is_file() and '.git' not in p.parts and p.stat().st_size>95*1024*1024]
+          if too_big: raise SystemExit('Dateien nahe/über GitHub-Einzeldateigrenze: '+', '.join(too_big))
+          PY
+
+      - name: Deployment-Artefakt bauen und versionieren
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          cp index.html sw.js manifest.webmanifest install.html 404.html .nojekyll _site/
+          cp -R icons media _site/
+          BUILD_ID="${GITHUB_SHA}"
+          sed -i "s/__GRENADIER_BUILD_ID__/${BUILD_ID}/g" _site/sw.js
+          python - <<'PY'
+          import json, os, datetime
+          from pathlib import Path
+          info={
+            'build_id': os.environ['GITHUB_SHA'],
+            'commit': os.environ['GITHUB_SHA'],
+            'deployed_at': datetime.datetime.now(datetime.timezone.utc).isoformat()
+          }
+          Path('_site/build-info.json').write_text(json.dumps(info,indent=2)+'\n',encoding='utf-8')
+          PY
+
+      - name: Pages-Artefakt hochladen
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+      - name: GitHub Pages veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v4
