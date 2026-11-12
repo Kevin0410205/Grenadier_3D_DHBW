@@ -31,10 +31,21 @@ jobs:
         run: |
           node --check sw.js
           python - <<'PY'
+          import re, subprocess, tempfile
+          from pathlib import Path
+          html=Path('index.html').read_text(encoding='utf-8')
+          for index, match in enumerate(re.finditer(r'<script\b[^>]*>(.*?)</script>',html,re.S|re.I)):
+              js=match.group(1)
+              if not js.strip(): continue
+              with tempfile.NamedTemporaryFile(suffix='.js',mode='w',encoding='utf-8') as tmp:
+                  tmp.write(js); tmp.flush()
+                  subprocess.run(['node','--check',tmp.name],check=True)
+          PY
+          python - <<'PY'
           import json
           from pathlib import Path
           json.loads(Path('manifest.webmanifest').read_text(encoding='utf-8'))
-          required=['index.html','sw.js','manifest.webmanifest','install.html','404.html','.nojekyll','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png','media/intro-wide.mp4','media/intro-portrait.mp4']
+          required=['index.html','sw.js','manifest.webmanifest','install.html','404.html','.nojekyll','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png','media/intro-wide.mp4','media/intro-portrait.mp4','media/intro-wide-hq-v10.mp4','media/intro-portrait-hq-v10.mp4']
           missing=[p for p in required if not Path(p).exists()]
           if missing: raise SystemExit('Fehlende Dateien: '+', '.join(missing))
           sw=Path('sw.js').read_text(encoding='utf-8')
