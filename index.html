@@ -1295,9 +1295,9 @@ button,a,[role="button"]{touch-action:manipulation}
     if(video.dataset.hqAttempt==='1'){
       video.dataset.hqAttempt='0';playRequested=false;
       video.src=video.dataset[format]||video.dataset.wide;root.dataset.quality='1080p-fallback';video.load();play();
-      startup=setTimeout(()=>{if(active&&!root.classList.contains('intro-video-ready'))finish(false,'unavailable');},1400);
+      startup=setTimeout(()=>{if(active&&!root.classList.contains('intro-video-ready'))finish(false,'unavailable');},4500);
     }else finish(false,'unavailable');
-  },window.matchMedia('(pointer: coarse)').matches?1800:2200);
+  },window.matchMedia('(pointer: coarse)').matches?5500:6500);
  }
  function open(){
   if(active)return;clearTimeout(exitTimer);active=true;playRequested=false;pendingExit=null;resumeAt=0;startedAt=performance.now();root.hidden=false;video.hidden=false;root.dataset.phase='film';reducedRemaining=4000;reducedDue=0;resetProgress();
@@ -1305,7 +1305,7 @@ button,a,[role="button"]{touch-action:manipulation}
   root.classList.remove('intro-video-ready','intro-fallback','intro-credit-visible','intro-exiting','intro-endcard-visible');document.body.classList.add('intro-active');workspace.inert=true;if(header)header.inert=true;
   deadline=setTimeout(()=>finish(false,'guard'),19000);root.focus({preventScroll:true});
   if(reduced){root.classList.add('intro-fallback');signalFirst();reducedStill();return;}
-  if(navigator.onLine===false){root.dataset.introOffline='skipped';finish(false,'offline');return;}
+  if(navigator.onLine===false){root.dataset.introOffline='cached-attempt';}
   video.autoplay=false;video.defaultMuted=true;video.muted=true;video.playsInline=true;video.volume=0;root.dataset.sound='off';selectSource(++session);
  }
  video.addEventListener('loadedmetadata',()=>{if(active&&!pendingExit&&resumeAt>0){video.currentTime=Math.min(resumeAt,Math.max(0,(video.duration||12.6)-.08));resumeAt=0;}play();});

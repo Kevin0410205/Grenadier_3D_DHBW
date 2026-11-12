@@ -3,7 +3,7 @@
    GitHub Actions replaces __GRENADIER_BUILD_ID__ in the deployed copy on every push, making every
    deployment a detectable PWA update without requiring a reinstall. */
 const BUILD_TOKEN='__GRENADIER_BUILD_ID__';
-const BUILD_ID=BUILD_TOKEN.startsWith('__')?'local-github-v6':BUILD_TOKEN;
+const BUILD_ID=(BUILD_TOKEN.startsWith('__')?'local-github-v6':BUILD_TOKEN)+'-intro-fix1';
 const SHELL_PREFIX='grenadier-shell-';
 const VERSION=SHELL_PREFIX+BUILD_ID;
 const MEDIA_CACHE='grenadier-media-v10-audit2';
@@ -44,9 +44,6 @@ self.addEventListener('activate',event=>event.waitUntil((async()=>{
 
 async function serveMedia(req,url){
  // Online playback: preserve native HTTP byte-range streaming; avoid reading full cached MP4 into memory.
- if(req.headers.has('range')){
-  try{const live=await fetch(req);if(live.ok)return live;}catch(_){/* Offline fallback below. */}
- }
  const cache=await caches.open(MEDIA_CACHE);const cached=await cache.match(url.href);
  if(cached){const range=req.headers.get('range');if(range){const match=/^bytes=(\d*)-(\d*)$/.exec(range.trim());
   if(match){const data=await cached.blob(),total=data.size;let start=match[1]?Number(match[1]):null,end=match[2]?Number(match[2]):null;
